@@ -14,7 +14,7 @@ public class supplierRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<Map<String, Object>> getSuppliers(String companyName, String location, String natureOfBusiness, String manufacturingProcess, int page, int size) {
-        String sql = "{call GetSuppliers(?, ?, ?, ?, ?, ?)}";
-        return jdbcTemplate.queryForList(sql, companyName, location, natureOfBusiness, manufacturingProcess, page, size);
+
+        return jdbcTemplate.queryForList("EXEC GetSuppliers ?,?,?,?,?,?", companyName, location, natureOfBusiness, manufacturingProcess, page, size);
     }
 }

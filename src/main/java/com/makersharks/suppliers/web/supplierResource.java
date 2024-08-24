@@ -19,12 +19,12 @@ public class supplierResource {
 
     @PostMapping("/supplier/")
     public ResponseEntity<List<Map<String, Object>>> getSuppliers(
-            @RequestParam String companyName,
-            @RequestParam String location,
-            @RequestParam String natureOfBusiness,
-            @RequestParam String manufacturingProcess,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(name = "companyName") String companyName,
+            @RequestParam(name = "location") String location,
+            @RequestParam(name = "natureOfBusiness") String natureOfBusiness,
+            @RequestParam(name = "manufacturingProcess") String manufacturingProcess,
+            @RequestParam(name = "page") int page,
+            @RequestParam(name = "size") int size) {
 
         List<Map<String, Object>> suppliers = SupplierService.getSuppliers(companyName, location, natureOfBusiness, manufacturingProcess, page, size);
         return new ResponseEntity<>(suppliers, HttpStatus.OK);
